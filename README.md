@@ -5,7 +5,7 @@ CSFloat Notifier - A lightweight Bash script to monitor the CSFloat market and d
 # Dependencies
 `curl` - For making HTTP requests to CSFloat API.
 
-`fq` - For parsing JSON data.
+`jq` - For parsing JSON data.
 <br>
 <br>
 # Usage

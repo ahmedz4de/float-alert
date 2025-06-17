@@ -34,6 +34,8 @@ function main() {
 	local key=$2
 	local delay=$3
 	local requestLink=$(transform_link "$link")
+ 	local firstId=""
+  	local secondId=""
 	
 	while true; do
 		if [[ "$firstId" != "$secondId" ]]; then

@@ -49,7 +49,7 @@ https://csfloat.com/item/854678566447746739
 <br>
 
 # Limitations
-1. For obvious reasons the program will only work on Linux and MacOS. To use on Windows, you will need [Windows Sybsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install).
+1. For obvious reasons the script will only work on Linux and MacOS. To use on Windows, you will need [Windows Sybsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install).
 2. If you lauch multiple instances, according to this [source](https://github.com/GODrums/BetterFloat/wiki/CSFloat-API-Documentation), you should not exceed 5 requests a minute, otherwise you get a cooldown.
-3. For a specified `<delay>` timeframe, if more than one item gets listed on the market, the program will only notify you of the most recent one. For this reason, avoid monitoring items that get listed in bulk or too often, for example, cases or cheap skins.
+3. For a specified `<delay>` timeframe, if more than one item gets listed on the market, the script will only notify you of the most recent one. For this reason, avoid monitoring items that get listed in bulk or too often, for example, cases or very cheap skins.
 4. For now, error handling and logging are not supported, ensure validity of you input.

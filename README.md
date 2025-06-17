@@ -1,5 +1,5 @@
 # Description
-float-alert.sh - A lightweight Bash script to monitor the CSFloat Market and detect new listings in real time.
+float-alert.sh - A Simple Bash script to monitor CSFloat Market and detect new listings in real time.
 <br>
 <br>
 # Dependencies

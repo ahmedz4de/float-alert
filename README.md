@@ -1,5 +1,5 @@
 # Description
-float-alert.sh - A Simple Bash script to monitor CSFloat Market and detect new listings in real time.
+float-alert.bash - A Simple Bash script to monitor CSFloat Market and detect new listings in real time.
 <br>
 <br>
 # Dependencies
@@ -10,7 +10,7 @@ float-alert.sh - A Simple Bash script to monitor CSFloat Market and detect new l
 <br>
 # Usage
 ```bash
-./float-alert.sh "<link>" "<key>" <delay>
+./float-alert.bash "<link>" "<key>" <delay>
 ```
 `<link>` - Should be replaced with a link for a CSFloat Market search with applied filters.
 
@@ -21,7 +21,7 @@ float-alert.sh - A Simple Bash script to monitor CSFloat Market and detect new l
 <br>
 ### Example:
 ```bash
-./float-alert.sh  "https://csfloat.com/search?sort_by=most_recent&def_index=500,503,505,506,507,508,509,512,514,515,516,517,518,519,520,521,522,523,525,526" "<key>" 15
+./float-alert.bash "https://csfloat.com/search?sort_by=most_recent&def_index=500,503,505,506,507,508,509,512,514,515,516,517,518,519,520,521,522,523,525,526" "<key>" 15
 ```
 This command monitors all knife listings and checks for updates every 15 seconds.
 ### Output:

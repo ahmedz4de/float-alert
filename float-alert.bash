@@ -1,22 +1,18 @@
-# !/bin/bash
+#!/bin/bash
 
 set -euo pipefail
 
-
-# This function takes in CSFloat URL and transforms it to API URL for convinience. 
 function transform_link(){
 	local link=$1
 	local strippedLink=${link:27}
 	echo "https://csfloat.com/api/v1/listings?limit=1&$strippedLink"
 }
 
-# This function makes a request to CSFloat API and returns a JSON.
 function make_request(){
-	local responce=$(curl -s -X GET $1 -H "Authorization: $2")
-	echo "$responce"
+	local response=$(curl -s -X GET $1 -H "Authorization: $2")
+	echo "$response"
 }
 
-# This function takes in JSON and "type", and returns corresponding data.
 function get_listing_data(){
 	local json=$1
 	local type=$2

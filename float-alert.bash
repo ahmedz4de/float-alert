@@ -24,7 +24,7 @@ function get_listing_data(){
 	elif [[ "$type" == "name" ]]; then
 		echo "$(echo "$json" | jq -r '.data[0].item.item_name')"
 	fi
-}	
+}
 
 function main() {
 	clear
@@ -34,29 +34,33 @@ function main() {
 	local key=$2
 	local delay=$3
 	local requestLink=$(transform_link "$link")
- 	local firstId=""
-  	local secondId=""
+	local firstId=""
+	local secondId=""
 	
 	while true; do
+	
 		if [[ "$firstId" != "$secondId" ]]; then
 			echo ""
 			echo $(get_listing_data "$first" "name")
 			echo "$(get_listing_data "$first" "price")\$"
 			echo "https://csfloat.com/item/$(get_listing_data "$first" "id")"
-
 		fi
+		
 		local first=$(make_request "$requestLink" "$key")
 		local firstId=$(get_listing_data "$first" "id")
 		sleep $delay
 		local second=$(make_request "$requestLink" "$key")
 		local secondId=$(get_listing_data "$second" "id")
+		
 		if [[ "$firstId" != "$secondId" ]]; then
 			echo ""
 			echo $(get_listing_data "$second" "name")
 			echo "$(get_listing_data "$second" "price")\$"
 			echo "https://csfloat.com/item/$(get_listing_data "$second" "id")"
 		fi
+		
 		sleep $delay
+		
 	done
 }
 

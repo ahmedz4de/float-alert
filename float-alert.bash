@@ -31,9 +31,9 @@ function main() {
 	echo "Running..."
 
 	local isFirstLaunch=1
-	local link=$1
-	local key=$2
-	local delay=$3
+	local link=$(sed -n '1p' input.txt)
+	local key=$(sed -n '2p' input.txt)
+	local delay=$(sed -n '3p' input.txt)
 	local requestLink=$(transform_link "$link")
 	local first=""
 	local second=""

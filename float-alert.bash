@@ -29,39 +29,44 @@ function get_listing_data(){
 function main() {
 	clear
 	echo "Running..."
-	
+
+	local isFirstLaunch=1
 	local link=$1
 	local key=$2
 	local delay=$3
 	local requestLink=$(transform_link "$link")
+	local first=""
+	local second=""
 	local firstId=""
 	local secondId=""
-	
+	local i=1
+
 	while true; do
-	
-		if [[ "$firstId" != "$secondId" ]]; then
+		if [[ "$firstId" != "$secondId" && "$isFirstLaunch" != 1 ]]; then
 			echo ""
-			echo $(get_listing_data "$first" "name")
-			echo "$(get_listing_data "$first" "price")\$"
-			echo "https://csfloat.com/item/$(get_listing_data "$first" "id")"
-		fi
-		
-		local first=$(make_request "$requestLink" "$key")
-		local firstId=$(get_listing_data "$first" "id")
-		sleep $delay
-		local second=$(make_request "$requestLink" "$key")
-		local secondId=$(get_listing_data "$second" "id")
-		
-		if [[ "$firstId" != "$secondId" ]]; then
-			echo ""
-			echo $(get_listing_data "$second" "name")
+			echo "$(get_listing_data "$second" "name")"
 			echo "$(get_listing_data "$second" "price")\$"
 			echo "https://csfloat.com/item/$(get_listing_data "$second" "id")"
 		fi
-		
-		sleep $delay
-		
+
+		first=$(make_request "$requestLink" "$key")
+		firstId=$(get_listing_data "$first" "id")
+		sleep "$delay"
+
+		if [[ "$firstId" != "$secondId" && "$isFirstLaunch" != 1 ]]; then
+			echo ""
+			echo "$(get_listing_data "$first" "name")"
+			echo "$(get_listing_data "$first" "price")\$"
+			echo "https://csfloat.com/item/$(get_listing_data "$first" "id")"
+		fi
+
+		second=$(make_request "$requestLink" "$key")
+		secondId=$(get_listing_data "$second" "id")
+		sleep "$delay"
+
+		isFirstLaunch=0
 	done
 }
+
 
 main "$@"

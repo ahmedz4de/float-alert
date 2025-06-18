@@ -3,49 +3,35 @@ float-alert.bash - A Simple Bash script to monitor CSFloat Market and detect new
 <br>
 <br>
 # Dependencies
+`git` - For cloning into the repository.
+
 `curl` - For making HTTP requests to CSFloat API.
 
 `jq` - For parsing JSON data.
 <br>
 <br>
 # Usage
+1. Clone the repository and `cd` into it.
 ```bash
-./float-alert.bash "<link>" "<key>" <delay>
+git clone https://github.com/ahmedz4de/float-alert.git
+cd float-alert/
 ```
-`<link>` - Should be replaced with a link for a CSFloat Market search with applied filters.
+2. Make `float-alert.bash` executable. 
+```bash
+chmod +x float-alert.bash
+```
+3. Edit `input.txt` According to this:
+
+`<link>` - Should be replaced with a link for a CSFloat Market search with applied filters. Make sure to select sort by newest.
 
 `<key>` - Should be replaced with CSFloat API Key. You can get it in Profile -> Developers -> New key.
 
 `<delay>` - Should be replaced with desired delay between API requests. For monitoring single item, recommended value is 15 (seconds).
-<br>
-<br>
-### Example:
+
+4. Execute the script.
 ```bash
-./float-alert.bash "https://csfloat.com/search?sort_by=most_recent&def_index=500,503,505,506,507,508,509,512,514,515,516,517,518,519,520,521,522,523,525,526" "<key>" 15
+chmod +x float-alert.bash
 ```
-This command monitors all knife listings and checks for updates every 15 seconds.
-### Output:
-```bash
-Running...
-
-★ Stiletto Knife
-430$
-https://csfloat.com/item/854678157721208729
-
-★ Stiletto Knife | Crimson Web (Field-Tested)
-432.33$
-https://csfloat.com/item/854678416614624516
-
-★ Shadow Daggers | Gamma Doppler (Factory New)
-214.94$
-https://csfloat.com/item/854678504455933411
-
-★ Paracord Knife | Tiger Tooth (Factory New)
-230$
-https://csfloat.com/item/854678566447746739
-...
-```
-<br>
 <br>
 
 # Limitations

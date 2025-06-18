@@ -22,7 +22,7 @@ function get_listing_data(){
 	elif [[ "$type" == "price" ]]; then
 		echo "$(echo "$json" | jq -r '(.data[0].price / 100)')"
 	elif [[ "$type" == "name" ]]; then
-		echo "$(echo "$json" | jq -r '.data[0].item.item_name')"
+		echo "$(echo "$json" | jq -r '.data[0].item.market_hash_name')"
 	fi
 }
 

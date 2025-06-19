@@ -30,6 +30,9 @@ function main() {
 	clear
 	echo "Running..."
 
+	local mode="$1"
+	local bot_token=$(sed -n '1p' telegram.txt)
+	local chat_id=$(sed -n '2p' telegram.txt)
 	local isFirstLaunch=1
 	local link=$(sed -n '1p' input.txt)
 	local key=$(sed -n '2p' input.txt)
@@ -42,10 +45,21 @@ function main() {
 
 	while true; do
 		if [[ "$firstId" != "$secondId" && "$isFirstLaunch" != 1 ]]; then
-			echo ""
-			echo "$(get_listing_data "$second" "name")"
-			echo "$(get_listing_data "$second" "price")\$"
-			echo "https://csfloat.com/item/$(get_listing_data "$second" "id")"
+			name=$(get_listing_data "$second" "name")
+			price=$(get_listing_data "$second" "price")
+			id=$(get_listing_data "$second" "id")
+
+			if [[ "$mode" == "t" ]]; then
+				message="$name"$'\n'"Price: ${price}\$"$'\n'"Link: https://csfloat.com/item/$id"
+
+				curl -s -o /dev/null --fail -X POST "https://api.telegram.org/bot$bot_token/sendMessage" \
+				-d chat_id="$chat_id" \
+				-d text="$message"
+
+			else
+				echo
+				echo "$message"
+			fi
 		fi
 
 		first=$(make_request "$requestLink" "$key")
@@ -53,10 +67,21 @@ function main() {
 		sleep "$delay"
 
 		if [[ "$firstId" != "$secondId" && "$isFirstLaunch" != 1 ]]; then
-			echo ""
-			echo "$(get_listing_data "$first" "name")"
-			echo "$(get_listing_data "$first" "price")\$"
-			echo "https://csfloat.com/item/$(get_listing_data "$first" "id")"
+			name=$(get_listing_data "$first" "name")
+			price=$(get_listing_data "$first" "price")
+			id=$(get_listing_data "$first" "id")
+
+			if [[ "$mode" == "t" ]]; then
+				message="$name"$'\n'"Price: ${price}\$"$'\n'"Link: https://csfloat.com/item/$id"
+
+				curl -s -o /dev/null --fail -X POST "https://api.telegram.org/bot$bot_token/sendMessage" \
+				-d chat_id="$chat_id" \
+				-d text="$message"
+
+			else
+				echo
+				echo "$message"
+			fi
 		fi
 
 		second=$(make_request "$requestLink" "$key")

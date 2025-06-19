@@ -30,7 +30,7 @@ chmod +x float-alert.bash
 
 4. Execute the script.
 ```bash
-chmod +x float-alert.bash
+./float-alert.bash
 ```
 <br>
 

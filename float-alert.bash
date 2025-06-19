@@ -39,7 +39,6 @@ function main() {
 	local second=""
 	local firstId=""
 	local secondId=""
-	local i=1
 
 	while true; do
 		if [[ "$firstId" != "$secondId" && "$isFirstLaunch" != 1 ]]; then

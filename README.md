@@ -20,7 +20,7 @@ cd float-alert/
 ```bash
 chmod +x float-alert.bash
 ```
-3. Edit `input.txt` According to this:
+3. Edit `input.txt`:
 
 `<link>` - Should be replaced with a link for a CSFloat Market search with applied filters. Make sure to select sort by newest.
 
@@ -28,9 +28,20 @@ chmod +x float-alert.bash
 
 `<delay>` - Should be replaced with desired delay between API requests. For monitoring single item, recommended value is 15 (seconds).
 
-4. Execute the script.
+3.1 If you want to get notifications via telegram, edit `telegram.txt`:
+
+`<bot_token>` - Should be replaced with bot token. You will get one if you create a bot with @BotFather.
+
+`<chat_id>` - Should be replaced with chat id. You can find how to get it online.
+
+4. Execute the script (Normal mode, no telegram notifications, only terminal output).
 ```bash
 ./float-alert.bash
+```
+
+4.1 Or (Telegram mode, no terminal output, only telegram notifications).
+```bash
+./float-alert.bash t
 ```
 <br>
 

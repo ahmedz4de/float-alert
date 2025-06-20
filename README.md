@@ -36,7 +36,7 @@ chmod +x float-alert.bash
 
 4. Execute the script (Normal mode, no telegram notifications, only terminal output).
 ```bash
-./float-alert.bash
+./float-alert.bash n
 ```
 
 4.1 Or (Telegram mode, no terminal output, only telegram notifications).
